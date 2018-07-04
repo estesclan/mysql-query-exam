@@ -40,14 +40,10 @@ WHERE scheduledDepartDateTime = actualDepartDateTime;
 6) Provide a list of airlines, flight numbers, gates, status, and arrival times arriving into Charlotte (CLT) on 10-30-2017. 
 Order your results by the arrival time.
 */
-
 SELECT name as Airline, flightNumber as Flight, gate as Gate, time(scheduledArriveDateTime) as Arrival, status as Status
 FROM flight JOIN airline
 ON airline.ID = flight.airlineID
-WHERE arriveAirport = 'CLT' and date(scheduledArriveDateTime) = '2017-10-30'
-
-
-
+WHERE arriveAirport = 'CLT' and date(scheduledArriveDateTime) = '2017-10-30';
 
 /*
 7) List the number of reservations by flight number. Order by reservations in descending order.
@@ -104,7 +100,7 @@ ORDER BY Route;
 12) Provide a report that counts the number of reservations and totals the reservation costs (as Revenue) 
 by Airline, flight, and route. Order the report by total revenue in descending order.
 */
-SELECT name as Airline,  flightNumber as Flight, concat(departAirport, ' --> ', arriveAirport) as Rout,
+SELECT name as Airline,  flightNumber as Flight, concat(departAirport, ' --> ', arriveAirport) as Route,
 count(passengerID) as 'Reservation Count', sum(cost) as Revenue
 FROM airline JOIN flight
 ON airline.ID = flight.airlineID
